@@ -22,10 +22,11 @@ class _AssiginmentScreenState extends State<AssiginmentScreen> {
   final List<String> _items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
   bool _isChecked = false;
   bool _isSwitched = false;
-  void _loadNotes() async {
-    _notes = await _dbHelper.getNotes();
-    setState(() {});
-  }
+  // void _loadNotes() async {
+  //   _notes = await _dbHelper.getNotes();
+  //   setState(() {});
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,13 +63,13 @@ class _AssiginmentScreenState extends State<AssiginmentScreen> {
                         TextButton(
                           onPressed: () {
                             final newNote = Note(
-                  title: _titleController.text,
-                  content: _contentController.text,
-                );
-                _dbHelper.insertNote(newNote);
-                _titleController.clear();
-                _contentController.clear();
-                _loadNotes();
+                              title: _titleController.text,
+                              content: _contentController.text,
+                            );
+                            _dbHelper.insertNote(newNote);
+                            _titleController.clear();
+                            _contentController.clear();
+                            _loadNotes();
                             Navigator.of(context).pop(); // Đóng hộp thoại
                             Navigator.pushReplacement(
                               context,
