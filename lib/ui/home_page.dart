@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:wrok_app_1/ui/assiginment_screen.dart';
+import 'package:wrok_app_1/ui/authentication/login_screen.dart';
+import 'package:wrok_app_1/ui/hello_user_screen.dart';
 import 'package:wrok_app_1/ui/schedule_screen.dart';
-import 'package:wrok_app_1/ui/signup_screen.dart';
+import 'package:wrok_app_1/ui/authentication/signup_screen.dart';
 import 'package:wrok_app_1/ui/today.dart';
-
+import 'package:wrok_app_1/ui/authentication/auth_service.dart';
+import 'package:provider/provider.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -13,14 +16,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0; // Thêm biến để theo dõi mục hiện tại
-
+  
   // Danh sách các widget tương ứng với các mục
-  final List<Widget> _pages = [
-    TodayScreen(),
-    ScheduleScreen(),
-    AssiginmentScreen(),
-    SignupScreen(),
-  ];
+
 
   void _onItemTapped(int index) {
     setState(() {
@@ -30,6 +28,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final auth = Provider.of<AuthService>(context);
+     final user = Provider.of<AuthService>(context).user;
+
+      final List<Widget> _pages = [
+    TodayScreen(),
+    ScheduleScreen(),
+    AssiginmentScreen(),
+    auth.isLoggedIn ? HelloUserScreen(user: user,) : LoginScreen(),
+  ];
     return Scaffold(
       body: _pages[_selectedIndex], // Hiển thị trang tương ứng
       bottomNavigationBar: Container(

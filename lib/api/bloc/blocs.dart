@@ -1,6 +1,6 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:wrok_app_1/api/resources/respository.dart';
-import '../models/item_api_model.dart';
+import '../../models/item_api_model.dart';
 
 class Blocs {
   final Fetcher = PublishSubject<List<ItemModel>>();

@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:wrok_app_1/api/bloc/blocs.dart';
 
-import '../api/models/item_api_model.dart';
+import '../models/item_api_model.dart';
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({super.key});

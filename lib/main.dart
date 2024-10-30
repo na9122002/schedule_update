@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:wrok_app_1/ui/authentication/auth_service.dart';
 import 'package:wrok_app_1/ui/home_page.dart';
-
+import 'package:provider/provider.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AuthService(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:wrok_app_1/helpers/app_fonts.dart';
-import 'package:wrok_app_1/helpers/database_helper.dart';
 import 'package:wrok_app_1/note_item.dart';
 import 'package:wrok_app_1/ui/home_page.dart';
 
@@ -14,18 +14,14 @@ class AssiginmentScreen extends StatefulWidget {
 }
 
 class _AssiginmentScreenState extends State<AssiginmentScreen> {
-  final DatabaseHelper _dbHelper = DatabaseHelper();
-  List<Note> _notes = [];
+
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _contentController = TextEditingController();
   String? _selectedItem; // Biến để lưu mục đã chọn
   final List<String> _items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
   bool _isChecked = false;
   bool _isSwitched = false;
-  // void _loadNotes() async {
-  //   _notes = await _dbHelper.getNotes();
-  //   setState(() {});
-  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +62,10 @@ class _AssiginmentScreenState extends State<AssiginmentScreen> {
                               title: _titleController.text,
                               content: _contentController.text,
                             );
-                            _dbHelper.insertNote(newNote);
+                    
                             _titleController.clear();
                             _contentController.clear();
-                            _loadNotes();
+                   
                             Navigator.of(context).pop(); // Đóng hộp thoại
                             Navigator.pushReplacement(
                               context,

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' show Client;
-import 'package:wrok_app_1/api/models/item_api_model.dart';
+import 'package:wrok_app_1/models/item_api_model.dart';
 
 class ApiProvider {
   final Client client = Client();
